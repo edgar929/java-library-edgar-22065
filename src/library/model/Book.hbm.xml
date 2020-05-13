@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 11, 2020 6:21:41 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="library.model.Book" optimistic-lock="version" schema="TETA" table="BOOK">
+    <id name="bookid" type="string">
+      <column length="4" name="BOOKID"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="library.model.Bookcategory" fetch="select" name="bookcategory">
+      <column length="4" name="CATEGORYID"/>
+    </many-to-one>
+    <property name="title" type="string">
+      <column length="40" name="TITLE"/>
+    </property>
+    <property name="publishinghouse" type="string">
+      <column length="40" name="PUBLISHINGHOUSE"/>
+    </property>
+    <property name="dateofpublication" type="date">
+      <column length="7" name="DATEOFPUBLICATION"/>
+    </property>
+    <property name="author" type="string">
+      <column length="30" name="AUTHOR"/>
+    </property>
+    <property name="pages" type="java.lang.Long">
+      <column name="PAGES" precision="10" scale="0"/>
+    </property>
+    <property name="numberofcopies" type="java.lang.Long">
+      <column name="NUMBEROFCOPIES" precision="10" scale="0"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="checkinouts" table="CHECKINOUT">
+      <key>
+        <column length="4" name="BOOKID"/>
+      </key>
+      <one-to-many class="library.model.Checkinout"/>
+    </set>
+  </class>
+</hibernate-mapping>

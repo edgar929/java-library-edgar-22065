@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 11, 2020 6:21:41 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="library.model.Client" optimistic-lock="version" schema="TETA" table="CLIENT">
+    <id name="regno" type="string">
+      <column length="4" name="REGNO"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="firstname" type="string">
+      <column length="30" name="FIRSTNAME"/>
+    </property>
+    <property name="lastname" type="string">
+      <column length="30" name="LASTNAME"/>
+    </property>
+    <property name="phonenumber" type="string">
+      <column length="13" name="PHONENUMBER"/>
+    </property>
+    <property name="emailaddress" type="string">
+      <column length="30" name="EMAILADDRESS"/>
+    </property>
+    <property name="clientcategory" type="string">
+      <column length="15" name="CLIENTCATEGORY"/>
+    </property>
+    <property name="photo" type="string">
+      <column name="PHOTO"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="checkinouts" table="CHECKINOUT">
+      <key>
+        <column length="4" name="REGNO"/>
+      </key>
+      <one-to-many class="library.model.Checkinout"/>
+    </set>
+  </class>
+</hibernate-mapping>

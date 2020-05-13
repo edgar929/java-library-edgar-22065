@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 11, 2020 6:21:41 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="library.model.Account" table="Account">
+    <id access="field" name="username" type="java.lang.String">
+      <column length="15" name="username"/>
+      <generator class="assigned"/>
+    </id>
+    <property access="field" name="email" type="java.lang.String">
+      <column length="30" name="email" not-null="true" unique="true"/>
+    </property>
+    <property access="field" name="firstname" type="java.lang.String">
+      <column length="30" name="firstname" not-null="true"/>
+    </property>
+    <property access="field" name="lastname" type="java.lang.String">
+      <column length="30" name="lastname" not-null="true"/>
+    </property>
+    <property access="field" name="password" type="java.lang.String">
+      <column length="20" name="password" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>
